@@ -1,0 +1,26 @@
+﻿<div>
+    <h1>List Movies</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Employee</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="activity in activities">
+                <td>
+                    <a href="/activities/edit/{{activity.Id}}" class="btn btn-default btn-xs">edit</a>
+                    <a href="/activities/delete/{{activity.Id}}" class="btn btn-danger btn-xs">delete</a>
+                </td>
+                <td>{{activity.Title}}</td>
+                <td>{{activity.Employee}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <a href="/activities/add" class="btn btn-primary">Add New Activity</a>
+    </p>
+</div>
