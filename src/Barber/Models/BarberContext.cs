@@ -9,6 +9,8 @@ namespace Barber.Models
     public class BarberContext : DbContext
     {
         public DbSet<Activity> Activities { get; set; }
+
+        public DbSet<Employee> Employees { get; set; }
     }
 
 }

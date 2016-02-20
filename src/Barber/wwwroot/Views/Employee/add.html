@@ -1,0 +1,18 @@
+﻿<h1>Add Employee</h1>
+<div class="row">
+    <div class="col-md-4">
+
+        <form ng-submit="add()">
+            <div class="form-group">
+                <label for="FirstName">Employee First Name</label>
+                <input name="FirstName" type="text" class="form-control" placeholder="Employee's First Name" ng-model="employee.FirstName">
+            </div>
+            <div class="form-group">
+                <label for="LastName">Employee Last Name</label>
+                <input name="LastName" type="text" class="form-control" placeholder="Employee's Last Name" ng-model="employee.LastName">
+            </div>
+            <a href="/" class="btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>

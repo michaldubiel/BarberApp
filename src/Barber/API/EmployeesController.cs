@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Barber.Models;
 using Microsoft.AspNet.Mvc;
 
@@ -9,54 +10,51 @@ using Microsoft.AspNet.Mvc;
 namespace Barber.API
 {
     [Route("api/[controller]")]
-    public class ActivitiesController : Controller
+    public class EmployeesController : Controller
     {
         private readonly BarberContext _dbContext;
 
-        public ActivitiesController(BarberContext dbContext)
+        public EmployeesController(BarberContext dbContext)
         {
             _dbContext = dbContext;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Activity> Get()
+        public IEnumerable<Employee> Get()
         {
-            return _dbContext.Activities;
+            return _dbContext.Employees;
         }
 
         // GET api/values/5
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var activity = _dbContext.Activities.FirstOrDefault(a => a.Id == id);
-            if (activity == null)
+            var employee = _dbContext.Employees.FirstOrDefault(a => a.Id == id);
+            if (employee == null)
             {
                 return new HttpNotFoundResult();
             }
             else {
-                return new ObjectResult(activity);
+                return new ObjectResult(employee);
             }
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]Activity activity)
+        public IActionResult Post([FromBody]Employee employee)
         {
-            if (activity.Id == 0)
+            if (employee.Id == 0)
             {
-                _dbContext.Activities.Add(activity);
+                _dbContext.Employees.Add(employee);
                 _dbContext.SaveChanges();
-                return new ObjectResult(activity);
+                return new ObjectResult(employee);
             }
             else
             {
-                var original = _dbContext.Activities.FirstOrDefault(m => m.Id == activity.Id);
-                original.EmployeeId = activity.EmployeeId;
-                original.Date = activity.Date;
-                original.Client = activity.Client;
-                original.Title = activity.Title;
-
+                var original = _dbContext.Employees.FirstOrDefault(m => m.Id == employee.Id);
+                original.FirstName = employee.FirstName;
+                original.LastName = employee.LastName;
                 _dbContext.SaveChanges();
                 return new ObjectResult(original);
             }
@@ -72,8 +70,8 @@ namespace Barber.API
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var activity = _dbContext.Activities.FirstOrDefault(m => m.Id == id);
-            _dbContext.Activities.Remove(activity);
+            var employee = _dbContext.Employees.FirstOrDefault(m => m.Id == id);
+            _dbContext.Employees.Remove(employee);
             _dbContext.SaveChanges();
             return new HttpStatusCodeResult(200);
         }
