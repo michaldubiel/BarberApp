@@ -1,0 +1,9 @@
+﻿<h1>Employee Details: {{employee.FirstName}} {{employee.LastName}} </h1>
+
+<div class="row">
+    <div class="col-md-3" ng-repeat="activity in employee.Activities">
+        <div> {{ activity.Id }} </div>
+        <div> {{ activity.Title }} </div>
+        <div> {{ activity.Date }} </div> 
+    </div>
+</div>

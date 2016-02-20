@@ -26,6 +26,10 @@
                 templateUrl: '/Views/Activity/delete.html',
                 controller: 'ActivitiesDeleteController'
             })
+            .when('/employees/list', {
+                templateUrl: '/Views/Employee/list.html',
+                controller: 'EmployeesListController'
+            })
             .when('/employees/add', {
                 templateUrl: '/Views/Employee/add.html',
                 controller: 'EmployeesAddController'
@@ -37,6 +41,10 @@
             .when('/employees/delete/:id', {
                 templateUrl: '/Views/Employee/delete.html',
                 controller: 'EmployeesDeleteController'
+            })
+            .when('/employees/:id', {
+                templateUrl: '/Views/Employee/details.html',
+                controller: 'EmployeesDetailsController'
             })
             .otherwise({
             redirectTo: "/"

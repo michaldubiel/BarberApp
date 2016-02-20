@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Barber.Models;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Data.Entity;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,7 +31,7 @@ namespace Barber.API
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var employee = _dbContext.Employees.FirstOrDefault(a => a.Id == id);
+            var employee = _dbContext.Employees.Include(b => b.Activities).SingleOrDefault(a => a.Id == id);
             if (employee == null)
             {
                 return new HttpNotFoundResult();

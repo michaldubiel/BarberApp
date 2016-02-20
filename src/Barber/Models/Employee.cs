@@ -8,6 +8,11 @@ namespace Barber.Models
 {
     public class Employee
     {
+        public Employee()
+        {
+            Activities = new List<Activity>();
+        }
+
         [Key]
         public int Id { get; set; }
 

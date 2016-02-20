@@ -27,12 +27,17 @@ namespace Barber
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<BarberContext>(options =>
-                {
+                .AddDbContext<BarberContext>(options => {
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]);
-                });
+            });
+
+            services.AddMvc()
+                .AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
         }
 
         public void Configure(IApplicationBuilder app)

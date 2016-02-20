@@ -6,13 +6,14 @@
         .controller('EmployeesListController', EmployeesListController)
         .controller('EmployeesAddController', EmployeesAddController)
         .controller('EmployeesEditController', EmployeesEditController)
-        .controller('EmployeesDeleteController', EmployeesDeleteController);
+        .controller('EmployeesDeleteController', EmployeesDeleteController)
+        .controller('EmployeesDetailsController', EmployeesDetailsController);
 
     EmployeesListController.$inject = ['$scope', 'Employee'];
 
     function EmployeesListController($scope, Employees) {
-        $scope.Employees = Employees.query();
-        console.log($scope.Employees);
+        $scope.employees = Employees.query();
+        console.log($scope.employees);
     }
 
     EmployeesAddController.$inject = ['$scope', '$location', 'Employee'];
@@ -46,6 +47,12 @@
                 $location.path('/');
             });
         };
+    }
+
+    EmployeesDetailsController.$inject = ['$scope', '$routeParams', '$location', 'Employee', 'Activity'];
+
+    function EmployeesDetailsController($scope, $routeParams, $location, Employee, Activity) {
+        $scope.employee = Employee.get({ id: $routeParams.id });
     }
 
 })();
