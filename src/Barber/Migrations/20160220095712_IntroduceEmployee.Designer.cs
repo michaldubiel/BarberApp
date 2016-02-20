@@ -8,9 +8,10 @@ using Barber.Models;
 namespace Barber.Migrations
 {
     [DbContext(typeof(BarberContext))]
-    partial class BarberContextModelSnapshot : ModelSnapshot
+    [Migration("20160220095712_IntroduceEmployee")]
+    partial class IntroduceEmployee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -29,8 +30,6 @@ namespace Barber.Migrations
                     b.Property<int>("EmployeeId");
 
                     b.Property<double>("Price");
-
-                    b.Property<int>("Status");
 
                     b.Property<string>("Title");
 
