@@ -1,0 +1,43 @@
+﻿<h1>Add Activity</h1>
+<div class="row">
+    <div class="col-md-4">
+
+        <form ng-submit="add()">
+            <div class="form-group">
+                <label for="Title">Activity Title</label>
+                <input name="Title" type="text" class="form-control" placeholder="Enter title" ng-model="activity.Title">
+            </div>
+            <div class="form-group">
+                <label for="Employee">Employee</label>
+                <select name="Employee "class="form-control" ng-model="activity.EmployeeId" ng-options="item.Id as item.FirstName+' '+item.LastName for item in employees">
+                    <option value="" selected disabled>Select Employee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ClientName">Client Name</label>
+                <input name="ClientName" type="text" class="form-control" placeholder="Enter client name" ng-model="activity.Client">
+            </div>
+
+            <div class="form-group">
+                <label for="Date">Date / Time</label>
+                <div class="row">
+                    <div class="col-md-8" ng-controller="DatepickerController">
+                        <p class="input-group">
+                            <input name="Date" type="text" placeholder="yyyy-mm-dd" class="form-control" uib-datepicker-popup ng-model="activity.Date" is-open="popup.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="Time" type="text" placeholder="HH:MM" class="form-control time-picker" ng-model="time"/>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/" class="btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+    </div>
+</div>

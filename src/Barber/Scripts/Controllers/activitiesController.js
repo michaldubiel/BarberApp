@@ -24,9 +24,10 @@
 
         $scope.add = function () {
             console.log($scope.activity);
+            console.log($scope.time);
             this.activity.Date.setHours(this.time.split(':')[0]);
-            this.activity.Date.setMinutes(this.time.split(':')[0]);
-            $scope.activity.$save(function() {
+            this.activity.Date.setMinutes(this.time.split(':')[1]);
+            $scope.activity.$save(function () {
                 $location.path('/');
             });
         };
@@ -35,8 +36,12 @@
     ActivitiesEditController.$inject = ['$scope', '$routeParams', '$location', 'Activity', 'Employee'];
 
     function ActivitiesEditController($scope, $routeParams, $location, Activity, Employee) {
-        $scope.activity = Activity.get({ id: $routeParams.id }, function(data) {
-            $scope.time = data.Date.split('T')[1].slice(0, 5);
+        $scope.activity = Activity.get({ id: $routeParams.id }, function (data) {
+           // $scope.activity.Date = moment($scope.activity.Date).format("YYYY-MM-DDTHH:mm");
+           // //$scope.activity.Date = new Date($scope.activity.Date);
+           // $scope.date = moment($scope.activity.Date).format("YYYY-MM-DD");
+            // $scope.time = moment($scope.activity.Date).format("HH:mm");
+            $scope.time = moment($scope.activity.Date).format("HH:mm");
             $scope.activity.Date = data.Date.replace(/T.*/, "");
             $scope.activity.Date = Date.parse($scope.activity.Date);
             $scope.activity.Date = new Date($scope.activity.Date);
@@ -44,13 +49,16 @@
 
         $scope.employees = Employee.query();
         $scope.edit = function () {
-            console.log(this.activity.Date);
+            this.activity.Date = new Date($scope.date);
             this.activity.Date.setHours(this.time.split(':')[0]);
-            this.activity.Date.setMinutes(this.time.split(':')[0]);
-            console.log($scope.activity);
-            $scope.activity.$save(function() {
+            this.activity.Date.setMinutes(this.time.split(':')[1]);
+            $scope.activity.$save(function () {
                 $location.path('/');
             });
+        };
+
+        $scope.log = function () {
+            console.log($scope.activity);
         };
     }
 

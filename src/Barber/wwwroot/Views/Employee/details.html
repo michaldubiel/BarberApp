@@ -1,9 +1,20 @@
-﻿<h1>Employee Details: {{employee.FirstName}} {{employee.LastName}} </h1>
-
+﻿<h1>Employee Details: {{ employee.FirstName }} {{ employee.LastName }} </h1>
+<hr/>
 <div class="row">
-    <div class="col-md-3" ng-repeat="activity in employee.Activities">
-        <div> {{ activity.Id }} </div>
-        <div> {{ activity.Title }} </div>
-        <div> {{ activity.Date }} </div> 
+    <div class="col-lg-2 col-md-4 col-sm-12" ng-repeat="activity in employee.Activities">
+        <table class="table table-bordered">
+            <thead class="table-gray-head">
+            <tr>
+                <th><a href="/activities/edit/{{ activity.Id }}">{{ activity.Title }}</a></th>
+            </tr>
+            </thead>
+            <tr>
+                <td>{{ activity.Client }}</td>
+            </tr>
+            <tr>
+                <td>{{ activity.Date }}</td>
+            </tr>
+        </table>
     </div>
+    <div class="alert alert-danger col-sm-12" role="alert" ng-hide="employee.Activities.length">No records found.</div>
 </div>

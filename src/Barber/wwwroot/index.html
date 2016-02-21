@@ -21,29 +21,31 @@
     <script src="//code.angularjs.org/1.5.0/angular-resource.js"></script>
     <script src="//code.angularjs.org/1.5.0/angular-route.js"></script>
     <script src="//code.angularjs.org/1.5.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap-tpls.min.js"></script>
     <script src="app.js"></script>
 </head>
 <body ng-cloak>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    BarberApp
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/activites/list">Activities<span class="sr-only">(current)</span></a></li>
-                    <li><a href="/employees/list">Employees</a></li>
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                BarberApp
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/activites/list">Activities<span class="sr-only">(current)</span></a></li>
+                <li><a href="/employees/list">Employees</a></li>
+            </ul>
         </div>
     </div>
+</div>
 <div class="body-content container-fluid">
     <ng-view></ng-view>
 </div>
 
 </body>
+
 </html>

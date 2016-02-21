@@ -10,7 +10,7 @@
     function DatepickerController($scope) {
 
         $scope.today = function () {
-            $scope.dt = new Date.UTC();
+            $scope.dt = new Date();
         };
         
         $scope.clear = function () {
@@ -27,7 +27,7 @@
         };
 
         $scope.toggleMin();
-        $scope.maxDate = new Date(2030, 12, 31);
+        $scope.maxDate = new Date(2099, 12, 31);
 
         $scope.open = function () {
             $scope.popup.opened = true;
@@ -42,7 +42,7 @@
             startingDay: 1
         };
 
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.formats = ['yyyy-mm-dd', 'dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
         $scope.altInputFormats = ['M!/d!/yyyy'];
 

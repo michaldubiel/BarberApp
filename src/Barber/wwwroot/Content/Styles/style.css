@@ -15,3 +15,16 @@
 .time-picker {
     width: 48px;
 }
+
+.table-gray-head {
+    background-color: #dcdcdc;
+}
+
+.table-gray-head a {
+    display: block;
+    text-decoration: none;
+}
+
+.table-options-cell {
+    width: 20%;
+}
