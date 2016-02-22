@@ -35,7 +35,7 @@
                     }, 5000);
                     $scope.activity = $scope.activity;
                 }
-                //$location.path('/');
+                $location.path('/');
             });
         };
     }
