@@ -7,7 +7,9 @@
     Activity.$inject = ['$resource'];
 
     function Activity($resource) {
-        return $resource('/api/activities/:id');
+        return $resource('/api/activities/:id', {}, {
+            'update': { method: "PUT" }
+        });
     }
 
 })();

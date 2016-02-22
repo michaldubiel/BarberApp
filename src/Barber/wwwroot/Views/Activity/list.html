@@ -3,15 +3,19 @@
     <table class="table table-bordered table-striped table-hover" ng-hide="!activities.length">
         <thead>
         <tr>
-            
+
             <th>Title</th>
-            <th>Employee</th>
+            <th>Client</th>
+            <th>Date</th>
+            <th>Employee Id</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="activity in activities | orderBy: 'Date' ">
             <td>{{activity.Title}}</td>
+            <td>{{activity.Client}}</td>
+            <td>{{activity.Date | date:"MM/dd/yyyy 'at' HH:mm"}}</td>
             <td>{{activity.EmployeeId}}</td>
             <td>
                 <a href="/activities/edit/{{activity.Id}}" class="btn btn-default btn-xs">Edit</a>

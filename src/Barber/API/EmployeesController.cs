@@ -45,26 +45,31 @@ namespace Barber.API
         [HttpPost]
         public IActionResult Post([FromBody]Employee employee)
         {
-            if (employee.Id == 0)
-            {
+            //if (employee.Id == 0)
+            //{
                 _dbContext.Employees.Add(employee);
                 _dbContext.SaveChanges();
                 return new ObjectResult(employee);
-            }
-            else
-            {
-                var original = _dbContext.Employees.FirstOrDefault(m => m.Id == employee.Id);
-                original.FirstName = employee.FirstName;
-                original.LastName = employee.LastName;
-                _dbContext.SaveChanges();
-                return new ObjectResult(original);
-            }
+            //}
+            //else
+            //{
+            //  var original = _dbContext.Employees.FirstOrDefault(m => m.Id == employee.Id);
+            //  original.FirstName = employee.FirstName;
+            //  original.LastName = employee.LastName;
+            //  _dbContext.SaveChanges();
+            //  return new ObjectResult(original);
+            //}
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public IActionResult Put([FromBody]Employee employee)
         {
+            var original = _dbContext.Employees.FirstOrDefault(m => m.Id == employee.Id);
+            original.FirstName = employee.FirstName;
+            original.LastName = employee.LastName;
+            _dbContext.SaveChanges();
+            return new ObjectResult(original);
         }
 
         // DELETE api/values/5

@@ -7,7 +7,9 @@
     Employee.$inject = ['$resource'];
 
     function Employee($resource) {
-        return $resource('/api/employees/:id');
+        return $resource('/api/employees/:id', {}, {
+            'update': { method: "PUT" }
+        });
     }
 
 })();
