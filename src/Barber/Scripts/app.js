@@ -11,6 +11,10 @@
         $routeProvider
             //Activity
             .when('/', {
+                templateUrl: '/Views/home.html',
+                controller: ''
+            })
+            .when('/activities/list', {
                 templateUrl: '/Views/Activity/list.html',
                 controller: 'ActivitiesListController'
             })
