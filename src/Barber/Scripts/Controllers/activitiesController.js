@@ -35,7 +35,7 @@
                     }, 5000);
                     $scope.activity = $scope.activity;
                 }
-                $location.path('/');
+                $location.path('/activities/list');
             });
         };
     }
@@ -54,7 +54,7 @@
         $scope.edit = function () {
             this.activity.Date.setUTCHours($scope.time.split(':')[0], $scope.time.split(':')[1]);
             $scope.activity.$update(function () {
-                $location.path('/');
+                $location.path('/activities/list');
             });
         };   
     }
@@ -65,7 +65,7 @@
         $scope.activity = Activity.get({ id: $routeParams.id });
         $scope.remove = function() {
             $scope.activity.$remove({ id: $scope.activity.Id }, function() {
-                $location.path('/');
+                $location.path('/activities/list');
             });
         };
     }

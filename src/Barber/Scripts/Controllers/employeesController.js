@@ -22,7 +22,7 @@
         $scope.employee = new Employee();
         $scope.add = function () {
             $scope.employee.$save(function () {
-                $location.path('/');
+                $location.path('/employees/list');
             });
         };
     }
@@ -32,8 +32,8 @@
     function EmployeesEditController($scope, $routeParams, $location, Employee) {
         $scope.employee = Employee.get({ id: $routeParams.id });
         $scope.edit = function () {
-            $scope.employee.$save(function () {
-                $location.path('/');
+            $scope.employee.$update(function () {
+                $location.path('/employees/list');
             });
         };
     }
@@ -44,7 +44,7 @@
         $scope.employee = Employee.get({ id: $routeParams.id });
         $scope.remove = function () {
             $scope.employee.$remove({ id: $scope.employee.Id }, function () {
-                $location.path('/');
+                $location.path('/employees/list');
             });
         };
     }
